@@ -55,7 +55,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return DefaultTabController(
         length: 3,
         child: Scaffold(
-          body: Column(
+          body: ListView(
             children: [
               const SizedBox(height: 50),
               // profile details
@@ -115,26 +115,103 @@ class _ProfilePageState extends State<ProfilePage> {
 
               const SizedBox(height: 25),
               // name
-              const Text('Mitch Koko'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Mitch Koko',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Text(' | '),
+                  Text(
+                    'Developer',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 10),
 
               // bio
+              Text(
+                  'UI Designer . Programmer . Youtube',
+                style: TextStyle(
+                    color: Colors.grey[600],
+                ),
+                textAlign: TextAlign.center,
+              ),
+
+              const SizedBox(height: 10),
 
               // link
+              Text(
+                'youtube.com/mitchkoko',
+                style: TextStyle(color: Colors.blue[400],
+                    fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+
+              const SizedBox(height: 20),
 
               // buttons
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  children: [
+                    // edit profile
+                    Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Text("Edit Profile"),
+                          ),
+                        ),
+                    ),
+
+                    const SizedBox(width: 10),
+
+                    // contact
+                    Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Contact",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ))
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
 
               // tab bar
-
-              // tab bar
-
               TabBar(
                 tabs: tabs,
               ),
 
             //tab bar view
-            Expanded(child: TabBarView(children: tabBarViews)),
+            SizedBox(
+                    height: 1000,
+                    child: TabBarView(children: tabBarViews),
+                ),
           ],
-        ),
+                  ),
         ),
     );
   }
